@@ -3,18 +3,51 @@
 #' \code{d3rug} creates an interactive rug plot.
 #' The rugplot is heavily inspired by the Lambrechts Strip Plot (reference).
 #'
+#' @param values \code{numeric} with values to be plotted
+#' @param labels \code{character} of same lenght as \code{values}. These will be used to
+#' annotate a value when hovered.
+#' @param color \code{character} with colors. Either a scalar or length of \code{values}.
+#' @param alpha transparancy of values which are not hovered or selected.
+#' @param unit \code{character} text to be appended to value.
+#' @param ... extra parameters
+#' @param width width of plot
+#' @param height height of plot
+#'
 #' @import htmlwidgets
 #' @export
-d3rug <- function(values, labels = names(values), width = "100%", height = "150px") {
-
+d3rug <- function( values
+                 , labels = names(values)
+                 , color = "steelblue"
+                 , color_hover = color
+                 , alpha = 0.3
+                 , unit = NULL
+                 , group = NULL
+                 , ...
+                 , width = "100%"
+                 , height = "150px"
+                 ) {
 
   if (is.null(labels)){
     labels <- seq_along(values)
   }
 
+  if (length(color) == 1){
+    color <- rep(color, length(values))
+  }
+
+  if (length(color_hover) == 1){
+    color_hover <- rep(color_hover, length(values))
+  }
+
   x = list(
-    values = unname(values),
-    labels = labels
+    values      = unname(values),
+    labels      = labels,
+    colors      = color,
+    color_hover = color_hover,
+    opacity     = alpha,
+    unit        = unit,
+    group       = group,
+    ...
   )
 
   # create widget

@@ -1,9 +1,10 @@
 
-g.axis.x path{
+g.axis path{
 	visibility: hidden;
 }
 
 .tick text {
 	color: #2c3b78;
 	opacity: 0.5;
+	font-size: 12pt;
 }

@@ -28,18 +28,27 @@ HTMLWidgets.widget({
       .style({ "font-size" : "18px"
              , "opacity"   : 0
       });
-    //var div = d3.select(el).append("div");
-
     var _options = {values: [], labels: []};
 
     function renderValue(options){
         _options = options;
         var values = options.values;
         var labels = options.labels;
-        var opacity = options.opacity || 0.3;
-/*        var width = options.width || width;
-        var height = options.height  || height;
-*/
+        var opacity = options.opacity;
+        var group = options.group || labels;
+        var unit  = options.unit || "";
+        var color_hover = options.color_hover;
+
+        var selected_group = null;
+
+        function color(_, i){
+          return (group[i] == selected_group)? color_hover[i]: options.colors[i];
+        }
+
+        function opac(_, i){
+          return (group[i] == selected_group)? 1 : opacity;
+        }
+
         x.domain(d3.extent(values));
 
         var x_axis = d3.svg.axis()
@@ -59,7 +68,7 @@ HTMLWidgets.widget({
                   , "y1"   : 50
                   , "y2"   : height
             })
-            .style({ "stroke"       : "#2c3b78"
+            .style({ "stroke"       : color
                    , "stroke-width" : 2
                    , "opacity"      : opacity
                    })
@@ -69,9 +78,16 @@ HTMLWidgets.widget({
                   .duration(100)
                 .attr({ y1: 0 })
                 .style({ "stroke-width" : 3
-                       , "opacity"      : 1 })
+                       , "opacity"      : 1
+                       //, "stroke"       : color_hover
+                })
                 ;
 
+              selected_group = group[i];
+
+              lines.style({"stroke" : color
+                          , "opacity": opac
+              });
 
               var label = labels[i];
               nametip
@@ -80,8 +96,11 @@ HTMLWidgets.widget({
                }})
                .transition()
                  .duration(100)
-               .style({"opacity" : 1})
-               .text(label + " " + value)
+               .style({ "opacity" : 1
+                      , "fill" : color
+                      //, "stroke-width" :  0.5
+               })
+               .text(label + ": " + value + unit)
                .attr({"x" : function(){
                  var _x = x(value);
                  if (_x > width/2){
@@ -99,8 +118,15 @@ HTMLWidgets.widget({
                .attr({ "y1" : 50 })
                .style({ "stroke-width" : 2
                       , "opacity"      : opacity
+                      , "stroke"       : function(){return color(null, i);}
                })
               ;
+              selected_group = null;
+
+              lines.style({ "stroke" : color
+                          , "opacity": opac
+              });
+
               nametip
               .transition()
                 .delay(100)
