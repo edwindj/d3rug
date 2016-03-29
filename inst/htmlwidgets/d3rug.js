@@ -17,6 +17,10 @@ HTMLWidgets.widget({
          ,  "transform": "translate(0,"+25+")"
     });
 
+    var x = d3.scale.linear()
+      .range([5, width - 5])
+      ;
+
     var nametip = svg.append("text")
       .attr({ "y" : 20
             , "x" : 5  //default value
@@ -36,10 +40,7 @@ HTMLWidgets.widget({
 /*        var width = options.width || width;
         var height = options.height  || height;
 */
-        var x = d3.scale.linear()
-          .range([5, width-5])
-          .domain(d3.extent(values))
-          ;
+        x.domain(d3.extent(values));
 
         var x_axis = d3.svg.axis()
           .scale(x)
@@ -51,7 +52,7 @@ HTMLWidgets.widget({
         var lines = svg.selectAll("line.value").data(values);
         lines.enter()
           .append("line")
-            .attr({ "className": "value"
+            .attr({ "class": "value"
                   , "id"   : function(d, i){return "value_" + labels[i];}
                   , "x1"   : x
                   , "x2"   : x
@@ -113,8 +114,16 @@ HTMLWidgets.widget({
     return {
       renderValue: renderValue,
       resize: function(width, height) {
+        console.log("x", x.range());
+        x.range([5, width - 5]);
+        console.log("x", x.range());
         svg.attr({ width : width
                  , height: height});
+
+        var lines = svg.selectAll("line.value");
+        lines.attr({"x1": x, "x2": x});
+        console.log(lines);
+        g_axis.call(d3.svg.axis().scale(x));
       }
     };
   }

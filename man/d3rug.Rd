@@ -4,7 +4,7 @@
 \alias{d3rug}
 \title{Interactive Rug plot}
 \usage{
-d3rug(message, width = NULL, height = NULL)
+d3rug(values, labels = names(values), width = "100\%", height = "150px")
 }
 \description{
 \code{d3rug} creates an interactive rug plot.

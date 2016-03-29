@@ -11,3 +11,7 @@ dependencies:
   src: htmlwidgets/lib/jquery
   script: dist/jquery.min.js
   version: 2.2.2
+- name: style
+  src: htmlwidgets
+  stylesheet: d3rug.css
+  version: 0.1.0

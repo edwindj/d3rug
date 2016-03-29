@@ -5,7 +5,7 @@
 #'
 #' @import htmlwidgets
 #' @export
-d3rug <- function(values, labels = names(values), width = NULL, height = 150) {
+d3rug <- function(values, labels = names(values), width = "100%", height = "150px") {
 
 
   if (is.null(labels)){

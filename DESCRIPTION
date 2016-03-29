@@ -1,6 +1,6 @@
 Package: d3rug
 Title: Interactive Rug Plot
-Version: 0.0.0.9000
+Version: 0.1.0.9000
 Authors@R: person("Edwin", "de Jonge", email = "edwindjonge@gmail.com", role = c("aut", "cre"))
 Description: An interactive rug plot can be created in a markdown document or shiny application. 'd3rug' is a
   reimplementation of the strip plot of Maarten Lambrechts.

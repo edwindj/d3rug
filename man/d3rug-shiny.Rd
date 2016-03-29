@@ -6,7 +6,7 @@
 \alias{renderD3rug}
 \title{Shiny bindings for d3rug}
 \usage{
-d3rugOutput(outputId, width = "100\%", height = "400px")
+d3rugOutput(outputId, width = "100\%", height = "150px")
 
 renderD3rug(expr, env = parent.frame(), quoted = FALSE)
 }
