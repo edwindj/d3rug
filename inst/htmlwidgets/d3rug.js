@@ -108,8 +108,6 @@ HTMLWidgets.widget({
               ;
             })
             ;
-        console.log(values);
-        //div.text("hello!");
     }
 
     return {
@@ -117,9 +115,6 @@ HTMLWidgets.widget({
       resize: function(width, height) {
         svg.attr({ width : width
                  , height: height});
-        options.width = width;
-        options.height = height;
-        renderValue(_options);
       }
     };
   }

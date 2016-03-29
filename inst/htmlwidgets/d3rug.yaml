@@ -11,5 +11,3 @@ dependencies:
   src: htmlwidgets/lib/jquery
   script: dist/jquery.min.js
   version: 2.2.2
-
-

@@ -1,0 +1,9 @@
+
+g.axis.x path{
+	visibility: hidden;
+}
+
+.tick text {
+	color: #2c3b78;
+	opacity: 0.5;
+}
