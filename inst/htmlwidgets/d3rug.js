@@ -97,7 +97,7 @@ HTMLWidgets.widget({
                .transition()
                  .duration(100)
                .style({ "opacity" : 1
-                      , "fill" : color
+                      , "fill" : function(){return color_hover[i];}
                       //, "stroke-width" :  0.5
                })
                .text(label + ": " + value + unit)
