@@ -17,11 +17,14 @@
 #' @export
 d3rug <- function( values
                  , labels = names(values)
-                 , color = "steelblue"
-                 , color_hover = color
+                 , col = "steelblue"
+                 , col_hover = col
                  , alpha = 0.3
                  , unit = NULL
                  , group = NULL
+                 , select = NULL
+                 , col_select = "red"
+                 , main = deparse(substitute(values))
                  , ...
                  , width = "100%"
                  , height = "150px"
@@ -31,22 +34,32 @@ d3rug <- function( values
     labels <- seq_along(values)
   }
 
-  if (length(color) == 1){
-    color <- rep(color, length(values))
+  if (length(col) == 1){
+    col <- rep(col, length(values))
   }
 
-  if (length(color_hover) == 1){
-    color_hover <- rep(color_hover, length(values))
+  if (length(col_hover) == 1){
+    col_hover <- rep(col_hover, length(values))
   }
 
-  x = list(
+  # if (!is.logical(select)){
+  #   select <- values %in% select
+  # }
+
+  if (length(col_select) == 1){
+    col_select <- rep(col_select, length(values))
+  }
+
+    x = list(
     values      = unname(values),
     labels      = labels,
-    colors      = color,
-    color_hover = color_hover,
+    colors      = col,
+    color_hover = col_hover,
     opacity     = alpha,
     unit        = unit,
     group       = group,
+    selected    = select,
+    col_select  = col_select,
     ...
   )
 

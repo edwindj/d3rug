@@ -147,7 +147,7 @@ HTMLWidgets.widget({
                  , height: height});
 
         var lines = svg.selectAll("line.value");
-        lines.attr({"x1": x, "x2": x});
+        lines.attr({"x1": x, "x2": x, "y2": height});
         console.log(lines);
         g_axis.call(d3.svg.axis().scale(x));
       }

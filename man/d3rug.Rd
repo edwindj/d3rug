@@ -4,7 +4,27 @@
 \alias{d3rug}
 \title{Interactive Rug plot}
 \usage{
-d3rug(values, labels = names(values), width = "100\%", height = "150px")
+d3rug(values, labels = names(values), color = "steelblue",
+  color_hover = color, alpha = 0.3, unit = NULL, group = NULL, ...,
+  width = "100\%", height = "150px")
+}
+\arguments{
+\item{values}{\code{numeric} with values to be plotted}
+
+\item{labels}{\code{character} of same lenght as \code{values}. These will be used to
+annotate a value when hovered.}
+
+\item{color}{\code{character} with colors. Either a scalar or length of \code{values}.}
+
+\item{alpha}{transparancy of values which are not hovered or selected.}
+
+\item{unit}{\code{character} text to be appended to value.}
+
+\item{...}{extra parameters}
+
+\item{width}{width of plot}
+
+\item{height}{height of plot}
 }
 \description{
 \code{d3rug} creates an interactive rug plot.
