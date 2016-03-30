@@ -6,9 +6,15 @@
 #' @param values \code{numeric} with values to be plotted
 #' @param labels \code{character} of same lenght as \code{values}. These will be used to
 #' annotate a value when hovered.
-#' @param color \code{character} with colors. Either a scalar or length of \code{values}.
+#' @param col \code{character} with colors. Either a scalar or length of \code{values}.
+#' @param col_hover \code{character} with colors used for coloring hovered values.
 #' @param alpha transparancy of values which are not hovered or selected.
 #' @param unit \code{character} text to be appended to value.
+#' @param group optional \code{character} that is used to highlight the group of
+#' values that are hovered or selected
+#' @param select optional \code{character} specifying which label is selected
+#' @param col_select \code{character} with color used for selected values.
+#' @param main title of the plot
 #' @param ... extra parameters
 #' @param width width of plot
 #' @param height height of plot
