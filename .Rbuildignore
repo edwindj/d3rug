@@ -3,3 +3,8 @@
 ^\.travis\.yml$
 ^README\.Rmd$
 ^README-.*\.png$
+^\.bowerrc
+^.*\.bower\.json
+^.*\.jshintrc
+^.*\.travis.yml
+^data-raw$

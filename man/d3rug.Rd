@@ -4,10 +4,46 @@
 \alias{d3rug}
 \title{Interactive Rug plot}
 \usage{
-d3rug(values, labels = names(values), width = "100\%", height = "150px")
+d3rug(values, labels = names(values), col = "steelblue",
+  col_hover = color, alpha = 0.3, unit = NULL, group = NULL, ...,
+  width = "100\%", height = "150px")
+}
+\arguments{
+\item{values}{\code{numeric} with values to be plotted}
+
+\item{labels}{\code{character} of same lenght as \code{values}. These will be used to
+annotate a value when hovered.}
+
+\item{alpha}{transparancy of values which are not hovered or selected.}
+
+\item{unit}{\code{character} text to be appended to value.}
+
+\item{group}{optional grouping vector. Values with identical group as the value being hovered will be highlighted.}
+
+\item{...}{extra parameters}
+
+\item{width}{width of plot}
+
+\item{height}{height of plot}
+
+\item{color}{\code{character} with colors. Either a scalar or length of \code{values}.}
+
+\item{color_hover}{\code{character} with colors used when hovering over values.}
 }
 \description{
 \code{d3rug} creates an interactive rug plot.
 The rugplot is heavily inspired by the Lambrechts Strip Plot (reference).
+}
+\examples{
+
+\dontrun{
+library(d3rug)
+income <- state.x77[,2]
+d3rug(income, height="100px")
+illiteracy_levels <- cut(state.x77[,3], 5)
+pal <- colorRampPalette(c("green","gray", "orange"))(nlevels(illiteracy_levels))
+col = pal[illiteracy_levels]
+d3rug(income, color=col)
+}
 }
 

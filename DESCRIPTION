@@ -7,4 +7,5 @@ Description: An interactive rug plot can be created in a markdown document or sh
 License: GPL-2
 LazyData: true
 RoxygenNote: 5.0.1
+Depends: R (>= 2.15)
 Imports: htmlwidgets (>= 0.6)

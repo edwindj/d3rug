@@ -3,9 +3,35 @@ title: "d3rug plot"
 output: html_document
 ---
 
-This 
+This package provides a interactive rug plot: it plots the values of a labelled numeric vector.
+`d3rug` is inspired by the [strip plot of Maarten Lambrechts]()
 
 ```{r}
 library(d3rug)
-d3rug(state.x77[,2])
+income <- state.x77[,2]
+d3rug(income, height="100px")
+```
+
+The user can see the labels of the values by moving the mouse to the value.
+
+The `d3rug` function can be tuned and adapted in the following ways:
+
+- with argument `col` different colors can be set: if `col` is of length 1, all stripes will have the same s=cor
+
+```{r}
+illiteracy_levels <- cut(state.x77[,3], 5)
+pal <- colorRampPalette(c("green","gray", "orange"))(nlevels(illiteracy_levels))
+col = pal[illiteracy_levels]
+d3rug(income, color=col)
+```
+
+You can supply your own labels:
+```{r}
+d3rug(income, labels=state.abb)
+```
+
+- with argument `col_hover` the color for hovering a value can be set.
+
+```{r}
+d3rug(income, color_hover = "red")
 ```

@@ -6,8 +6,10 @@
 #' @param values \code{numeric} with values to be plotted
 #' @param labels \code{character} of same lenght as \code{values}. These will be used to
 #' annotate a value when hovered.
-#' @param color \code{character} with colors. Either a scalar or length of \code{values}.
+#' @param col \code{character} with colors. Either a scalar or length of \code{values}.
+#' @param col_hover \code{character} with colors used when hovering over values.
 #' @param alpha transparancy of values which are not hovered or selected.
+#' @param group optional grouping vector. Values with identical group as the value being hovered will be highlighted.
 #' @param unit \code{character} text to be appended to value.
 #' @param ... extra parameters
 #' @param width width of plot
@@ -15,10 +17,21 @@
 #'
 #' @import htmlwidgets
 #' @export
+#' @examples
+#'
+#' \dontrun{
+#' library(d3rug)
+#' income <- state.x77[,2]
+#' d3rug(income, height="100px")
+#' illiteracy_levels <- cut(state.x77[,3], 5)
+#' pal <- colorRampPalette(c("green","gray", "orange"))(nlevels(illiteracy_levels))
+#' col = pal[illiteracy_levels]
+#' d3rug(income, color=col)
+#' }
 d3rug <- function( values
                  , labels = names(values)
-                 , color = "steelblue"
-                 , color_hover = color
+                 , col = "steelblue"
+                 , col_hover = color
                  , alpha = 0.3
                  , unit = NULL
                  , group = NULL
@@ -62,7 +75,7 @@ d3rug <- function( values
 
 #' Shiny bindings for d3rug
 #'
-#' Output and render functions for using d3rug within Shiny
+#' Output and render functions for using \code{\link{d3rug}} within Shiny
 #' applications and interactive Rmd documents.
 #'
 #' @param outputId output variable to read from
