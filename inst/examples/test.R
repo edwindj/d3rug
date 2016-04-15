@@ -10,5 +10,5 @@ d3rug( USArrests$UrbanPop
      , col="brown"
      , col_hover="steelblue"
      , unit = "%"
-     , group = group
+#     , group = group
      )
