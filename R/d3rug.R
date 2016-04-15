@@ -81,7 +81,7 @@ d3rug <- function( values
 
 #' Shiny bindings for d3rug
 #'
-#' Output and render functions for using d3rug within Shiny
+#' Output and render functions for using \code{\link{d3rug}} within Shiny
 #' applications and interactive Rmd documents.
 #'
 #' @param outputId output variable to read from
