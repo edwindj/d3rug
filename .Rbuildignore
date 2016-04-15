@@ -6,3 +6,4 @@
 ^README-.*\.gif$
 ^\..+
 /\..+
+^appveyor\.yml$
