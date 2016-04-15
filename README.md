@@ -2,9 +2,10 @@
 
 d3rug is a R package and function that generates interactive rug plots. 
 It is heavily inspired
-by the interactive [strip plot of Maarten Lambrechts](). The interactive plot
-is a [htmlwidget]() and thus can be used within [RStudio](), [R-markdown]() 
-documents and [Shiny]() applications.
+by the interactive [strip plot of Maarten Lambrechts](http://www.maartenlambrechts.be/portfolio/grafieken/interactieve-strip-plots/).
+The interactive plot is a [htmlwidget](http://www.htmlwidgets.org/) 
+and thus can be used within 
+**RStudio**, **R-markdown** documents and **Shiny** dashboards.
 
 ## Install
 
@@ -30,5 +31,6 @@ d3rug( income_by_state
      , alpha     = 0.4
      )
 ``` 
+
 generate the following plot (the example shown here is a captured animated gif)
 ![example of d3rug](README-fig/example.gif)
