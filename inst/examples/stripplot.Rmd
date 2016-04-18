@@ -22,7 +22,7 @@ The `d3rug` function can be tuned and adapted in the following ways:
 illiteracy_levels <- cut(state.x77[,3], 5)
 pal <- colorRampPalette(c("green","gray", "orange"))(nlevels(illiteracy_levels))
 col = pal[illiteracy_levels]
-d3rug(income, color=col)
+d3rug(income, col=col)
 ```
 
 You can supply your own labels:
@@ -33,5 +33,14 @@ d3rug(income, labels=state.abb)
 - with argument `col_hover` the color for hovering a value can be set.
 
 ```{r}
-d3rug(income, color_hover = "red")
+d3rug(income, col_hover = "red")
 ```
+
+
+- with argument `group` you can highlight a group of values
+
+```{r}
+group <- substr(state.abb, 1, 1)
+d3rug(income, col_hover = "red", group = group)
+```
+

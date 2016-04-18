@@ -8,3 +8,7 @@
 ^.*\.jshintrc
 ^.*\.travis.yml
 ^data-raw$
+^README-.*\.gif$
+^\..+
+/\..+
+^appveyor\.yml$

@@ -4,8 +4,9 @@
 \alias{d3rug}
 \title{Interactive Rug plot}
 \usage{
-d3rug(values, labels = names(values), col = "steelblue",
-  col_hover = color, alpha = 0.3, unit = NULL, group = NULL, ...,
+d3rug(values, labels = names(values), col = "steelblue", col_hover = col,
+  alpha = 0.3, unit = NULL, group = NULL, select = NULL,
+  col_select = "red", main = deparse(substitute(values)), ...,
   width = "100\%", height = "150px")
 }
 \arguments{
@@ -14,21 +15,28 @@ d3rug(values, labels = names(values), col = "steelblue",
 \item{labels}{\code{character} of same lenght as \code{values}. These will be used to
 annotate a value when hovered.}
 
+\item{col}{\code{character} with colors. Either a scalar or length of \code{values}.}
+
+\item{col_hover}{\code{character} with colors used for coloring hovered values.}
+
 \item{alpha}{transparancy of values which are not hovered or selected.}
 
 \item{unit}{\code{character} text to be appended to value.}
 
-\item{group}{optional grouping vector. Values with identical group as the value being hovered will be highlighted.}
+\item{group}{optional \code{character} that is used to highlight the group of
+values that are hovered or selected}
+
+\item{select}{optional \code{character} specifying which label is selected}
+
+\item{col_select}{\code{character} with color used for selected values.}
+
+\item{main}{title of the plot}
 
 \item{...}{extra parameters}
 
 \item{width}{width of plot}
 
 \item{height}{height of plot}
-
-\item{color}{\code{character} with colors. Either a scalar or length of \code{values}.}
-
-\item{color_hover}{\code{character} with colors used when hovering over values.}
 }
 \description{
 \code{d3rug} creates an interactive rug plot.

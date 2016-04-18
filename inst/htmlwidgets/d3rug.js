@@ -97,7 +97,7 @@ HTMLWidgets.widget({
                .transition()
                  .duration(100)
                .style({ "opacity" : 1
-                      , "fill" : color
+                      , "fill" : function(){return color_hover[i];}
                       //, "stroke-width" :  0.5
                })
                .text(label + ": " + value + unit)
@@ -112,16 +112,19 @@ HTMLWidgets.widget({
               nametip.text(label);
             })
             .on("mouseout", function(_, i){
+              if (selected_group == group[i]){
+                selected_group = null;
+              }
+
               d3.select(this)
                .transition()
                  .delay(100)
                .attr({ "y1" : 50 })
                .style({ "stroke-width" : 2
                       , "opacity"      : opacity
-                      , "stroke"       : function(){return color(null, i);}
+                      , "stroke"       : color
                })
               ;
-              selected_group = null;
 
               lines.style({ "stroke" : color
                           , "opacity": opac
@@ -147,7 +150,7 @@ HTMLWidgets.widget({
                  , height: height});
 
         var lines = svg.selectAll("line.value");
-        lines.attr({"x1": x, "x2": x});
+        lines.attr({"x1": x, "x2": x, "y2": height});
         console.log(lines);
         g_axis.call(d3.svg.axis().scale(x));
       }

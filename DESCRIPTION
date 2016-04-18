@@ -1,11 +1,19 @@
 Package: d3rug
 Title: Interactive Rug Plot
 Version: 0.1.0.9000
-Authors@R: person("Edwin", "de Jonge", email = "edwindjonge@gmail.com", role = c("aut", "cre"))
-Description: An interactive rug plot can be created in a markdown document or shiny application. 'd3rug' is a
-  reimplementation of the strip plot of Maarten Lambrechts.
+Authors@R: c(person("Edwin", "de Jonge", email = "edwindjonge@gmail.com",
+  role = c("aut", "cre")), person("Maarten", "Lambrechts", comment="Original
+  idea and original implementation,
+  http://www.maartenlambrechts.be/interactive-strip-plots-for-visualizing-demographics "
+  , role = c("aut")))
+Description: An interactive rug plot can be created in a markdown document or
+  shiny application. 'd3rug' is a
+  reimplementation of the strip plot of Maarten Lambrechts, adapted for usage in
+  R.
 License: GPL-2
 LazyData: true
 RoxygenNote: 5.0.1
 Depends: R (>= 2.15)
 Imports: htmlwidgets (>= 0.6)
+URL: https://github.com/edwindj/d3rug
+BugReports: https://github.com/edwindj/d3rug/issues

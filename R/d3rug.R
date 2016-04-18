@@ -7,10 +7,14 @@
 #' @param labels \code{character} of same lenght as \code{values}. These will be used to
 #' annotate a value when hovered.
 #' @param col \code{character} with colors. Either a scalar or length of \code{values}.
-#' @param col_hover \code{character} with colors used when hovering over values.
+#' @param col_hover \code{character} with colors used for coloring hovered values.
 #' @param alpha transparancy of values which are not hovered or selected.
-#' @param group optional grouping vector. Values with identical group as the value being hovered will be highlighted.
 #' @param unit \code{character} text to be appended to value.
+#' @param group optional \code{character} that is used to highlight the group of
+#' values that are hovered or selected
+#' @param select optional \code{character} specifying which label is selected
+#' @param col_select \code{character} with color used for selected values.
+#' @param main title of the plot
 #' @param ... extra parameters
 #' @param width width of plot
 #' @param height height of plot
@@ -31,10 +35,13 @@
 d3rug <- function( values
                  , labels = names(values)
                  , col = "steelblue"
-                 , col_hover = color
+                 , col_hover = col
                  , alpha = 0.3
                  , unit = NULL
                  , group = NULL
+                 , select = NULL
+                 , col_select = "red"
+                 , main = deparse(substitute(values))
                  , ...
                  , width = "100%"
                  , height = "150px"
@@ -44,22 +51,32 @@ d3rug <- function( values
     labels <- seq_along(values)
   }
 
-  if (length(color) == 1){
-    color <- rep(color, length(values))
+  if (length(col) == 1){
+    col <- rep(col, length(values))
   }
 
-  if (length(color_hover) == 1){
-    color_hover <- rep(color_hover, length(values))
+  if (length(col_hover) == 1){
+    col_hover <- rep(col_hover, length(values))
   }
 
-  x = list(
+  # if (!is.logical(select)){
+  #   select <- values %in% select
+  # }
+
+  if (length(col_select) == 1){
+    col_select <- rep(col_select, length(values))
+  }
+
+    x = list(
     values      = unname(values),
     labels      = labels,
-    colors      = color,
-    color_hover = color_hover,
+    colors      = col,
+    color_hover = col_hover,
     opacity     = alpha,
     unit        = unit,
     group       = group,
+    selected    = select,
+    col_select  = col_select,
     ...
   )
 
